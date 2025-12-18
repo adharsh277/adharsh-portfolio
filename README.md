@@ -9,7 +9,7 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 
 ## 🛠️ Tech Stack
 - **HTML, CSS, JavaScript**  
-- Deployed with **GitHub Pages** (or Netlify / Vercel if you use them)  
+- Deployed with **GitHub Pages** Vercel
 
 ## 📌 Live Demo
 👉 [View Portfolio](adharsh-portfolio-omega.vercel.app)
@@ -20,3 +20,4 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 - **Email**: adharshu777@gmail.com  
 - **LinkedIn**: [Adharsh Unnikrishnnan](https://www.linkedin.com/in/adharsh277/)  
 - **GitHub**: [adharsh277](https://github.com/adharsh277)  
+
