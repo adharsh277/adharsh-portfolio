@@ -12,7 +12,8 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 - Deployed with **GitHub Pages** Vercel
 
 ## 📌 Live Demo
-👉 [View Portfolio]([adharsh-portfolio-omega.vercel.app](https://adharsh-portfolio-omega.vercel.app/])
+👉 👉 [View Portfolio](https://adharsh-portfolio-omega.vercel.app/)
+
 
 ---
 
