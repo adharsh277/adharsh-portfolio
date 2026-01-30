@@ -5,7 +5,7 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 ## 🚀 Features
 - Responsive and modern design  
 - Sections for **About Me, Skills, and Projects**  
-- Easy to update and customize  
+- Easy to update and customize
 
 ## 🛠️ Tech Stack
 - **HTML, CSS, JavaScript**  
