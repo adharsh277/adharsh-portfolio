@@ -14,7 +14,6 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 ## 📌 Live Demo
  👉 [View Portfolio](https://adharsh-portfolio-omega.vercel.app/)
 
-
 ---
 
 ### 📬 Contact
