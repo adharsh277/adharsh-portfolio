@@ -18,7 +18,7 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 
 ### 📬 Contact
 - **Email**: adharshu777@gmail.com  
-- **LinkedIn**: [Adharsh Unnikrishnnan](https://www.linkedin.com/in/adharsh277/)  
+- **LinkedIn**: [Adharsh Unnikrishnnan](https://www.linkedin.com/in/adharsh277/)
 - **GitHub**: [adharsh277](https://github.com/adharsh277)
 
 
