@@ -8,7 +8,7 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 - Easy to update and customize
 
 ## 🛠️ Tech Stack
-- **HTML, CSS, JavaScript**  
+- **HTML, CSS, JavaScript**
 - Deployed with **GitHub Pages** Vercel
   
 ## 📌 Live Demo
