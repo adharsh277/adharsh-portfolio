@@ -784,6 +784,18 @@ body.light .header {
   gap: var(--gutter-x-small);
 }
 
+.header-btns .btn {
+  font-size: 1.05rem;
+  padding: 12px 30px;
+}
+
+@media (max-width: 700px) {
+  .header-btns .btn {
+    font-size: 1rem;
+    padding: 11px 24px;
+  }
+}
+
 @media (max-width: 400px) {
   .header-textbox {
     left: 0;
@@ -1561,9 +1573,9 @@ body.light .deploy-card:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 800;
-  padding: 18px 52px;
+  padding: 12px 30px;
   border-radius: var(--gutter-nano);
   position: relative;
   overflow: hidden;
@@ -2327,10 +2339,10 @@ body.light .highlight-card::before {
 }
 
 .testimonials-toggle {
-  font-size: 1.1rem;
-  padding: 14px 42px;
+  font-size: 0.95rem;
+  padding: 10px 24px;
   color: var(--important);
-  border: 2px solid var(--important);
+  border: 1px solid var(--important);
   background: var(--bg-color-secondary);
   cursor: pointer;
   border-radius: var(--gutter-nano);
