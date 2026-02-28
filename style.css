@@ -1070,7 +1070,6 @@ body.light .contact > .container {
   border-radius: 17px;
   background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-cyan));
   background-size: 300% 300%;
-  animation: deploy-glow-shift 6s ease infinite;
   opacity: 0.25;
   z-index: 0;
   transition: opacity 0.4s ease;
@@ -1078,11 +1077,6 @@ body.light .contact > .container {
 
 .deploy-card:hover .deploy-card-glow {
   opacity: 0.55;
-}
-
-@keyframes deploy-glow-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 body.light .deploy-card-glow {
@@ -1151,16 +1145,10 @@ body.light .deploy-status {
   height: 8px;
   border-radius: 50%;
   background: var(--neon-cyan);
-  animation: status-pulse 2.5s ease-in-out infinite;
 }
 
 body.light .deploy-status-dot {
   background: #0a6e5c;
-}
-
-@keyframes status-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(115, 255, 225, 0.4); }
-  50% { opacity: 0.5; box-shadow: 0 0 10px 3px rgba(115, 255, 225, 0.2); }
 }
 
 .deploy-index {
@@ -1269,7 +1257,6 @@ body.light .pipeline-stage.completed .pipeline-icon {
   color: var(--neon-purple);
   background: rgba(215, 174, 251, 0.1);
   box-shadow: 0 0 12px rgba(215, 174, 251, 0.2);
-  animation: live-glow 2.5s ease-in-out infinite;
 }
 
 body.light .pipeline-stage.live .pipeline-icon {
@@ -1277,11 +1264,6 @@ body.light .pipeline-stage.live .pipeline-icon {
   color: #7c6ec4;
   background: rgba(124, 110, 196, 0.08);
   box-shadow: 0 0 8px rgba(124, 110, 196, 0.12);
-}
-
-@keyframes live-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(215, 174, 251, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(215, 174, 251, 0.4); }
 }
 
 .pipeline-label {
@@ -1330,7 +1312,6 @@ body.light .pipeline-stage.live .pipeline-label {
   height: 4px;
   background: var(--neon-cyan);
   border-radius: 2px;
-  animation: pipeline-flow 2.5s linear infinite;
   box-shadow: 0 0 6px rgba(115, 255, 225, 0.3);
 }
 
@@ -1341,11 +1322,6 @@ body.light .pipeline-connector {
 body.light .pipeline-connector::after {
   background: #0a6e5c;
   box-shadow: 0 0 4px rgba(10, 110, 92, 0.3);
-}
-
-@keyframes pipeline-flow {
-  0% { left: -30%; }
-  100% { left: 100%; }
 }
 
 /* ---- Tech Pills — cyan tones ---- */
