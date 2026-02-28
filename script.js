@@ -299,6 +299,57 @@ revealSections.forEach((section) => {
   sectionObserver.observe(section);
 });
 
+// ---- Deploy Card Staggered Reveal ----
+
+const deployCards = document.querySelectorAll(".deploy-card");
+
+deployCards.forEach((card, index) => {
+  card.style.opacity = "0";
+  card.style.transform = "translateY(40px)";
+  card.style.transition = `opacity 0.6s ease ${index * 0.18}s, transform 0.6s ease ${index * 0.18}s`;
+});
+
+const deployObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+
+deployCards.forEach((card) => deployObserver.observe(card));
+
+// ---- Deploy Card 3D Tilt on Hover ----
+
+deployCards.forEach((card) => {
+  const inner = card.querySelector(".deploy-card-inner");
+  if (!inner) return;
+
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -3;
+    const rotateY = ((x - centerX) / centerX) * 3;
+    inner.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    inner.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+    inner.style.transition = "transform 0.5s ease";
+  });
+
+  card.addEventListener("mouseenter", () => {
+    inner.style.transition = "transform 0.1s ease";
+  });
+});
+
 // ---- Theme Toggle ----
 
 const switchThemeEl = document.querySelector('input[type="checkbox"]');
