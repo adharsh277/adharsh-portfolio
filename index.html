@@ -68,6 +68,11 @@
       document.body.classList.add(theme);
     </script>
 
+    <!-- Futuristic animated background canvas -->
+    <canvas id="cloud-canvas"></canvas>
+    <!-- Scanline overlay -->
+    <div class="scanline-overlay"></div>
+
     <!-- Mobile sticky CTA bar -->
     <div class="mobile-cta">
       <a href="#contact" class="btn btn-cta mobile-cta-btn">Get in Touch</a>
@@ -96,10 +101,15 @@
 
       <div class="container">
         <div class="header-textbox">
+          <!-- Futuristic badge -->
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            CLOUD &middot; DEVOPS &middot; INFRASTRUCTURE
+          </div>
           <!-- Replace with your name and job title -->
           <h1 class="h1">
-            <span>Hi, I'm Adharsh Unnikrishnan</span>
-            <span>Cloud & DevOps Engineer</span>
+            <span>Hi, I'm <span class="glitch" data-text="Adharsh Unnikrishnan">Adharsh Unnikrishnan</span></span>
+            <span class="gradient-text-hero">Cloud & DevOps Engineer</span>
           </h1>
 
           <!-- Add a small introductory paragraph about yourself -->
