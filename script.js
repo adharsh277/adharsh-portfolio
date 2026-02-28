@@ -112,3 +112,43 @@ logosWrappers.forEach(async (logoWrapper, i) => {
 });
 
 yearEl.textContent = new Date().getFullYear();
+
+// Testimonials show/hide toggle
+
+const testimonialsToggle = document.querySelector(".testimonials-toggle");
+const testimonialsList = document.querySelector(".testimonials");
+const extraTestimonials = document.querySelectorAll(".testimonial-extra");
+
+if (testimonialsToggle && testimonialsList) {
+  testimonialsToggle.addEventListener("click", () => {
+    const isExpanded = testimonialsList.classList.toggle("show-all");
+
+    // Directly set inline display on each extra testimonial
+    extraTestimonials.forEach((el) => {
+      el.style.display = isExpanded ? "flex" : "none";
+    });
+
+    testimonialsToggle.textContent = isExpanded
+      ? "Show Less"
+      : "Show More Testimonials";
+    testimonialsToggle.setAttribute("aria-expanded", String(isExpanded));
+  });
+}
+
+// Hide mobile CTA bar when contact section is in viewport
+
+const mobileCta = document.querySelector(".mobile-cta");
+const contactSection = document.querySelector(".contact");
+
+if (mobileCta && contactSection) {
+  const ctaObserver = new IntersectionObserver(
+    ([entry]) => {
+      mobileCta.style.transform = entry.isIntersecting
+        ? "translateY(100%)"
+        : "translateY(0)";
+    },
+    { threshold: 0.2 }
+  );
+  ctaObserver.observe(contactSection);
+  mobileCta.style.transition = "transform 0.3s ease";
+}

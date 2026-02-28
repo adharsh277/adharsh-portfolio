@@ -945,17 +945,36 @@ body.dark .work-links img {
 /* ----- Skills -----*/
 /* --------------------------------- */
 
+.skills-category {
+  margin-block-start: var(--gutter-x-large);
+}
+
+.skills-category-title {
+  font-size: var(--h4);
+  color: var(--sub);
+  text-align: center;
+  margin-block-end: var(--gutter-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
 .skills-imgs {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  gap: var(--gutter-x-large);
-  padding-block-start: var(--gutter-x-large);
+  gap: var(--gutter-large);
 }
 
 .skills-img {
   block-size: 135px;
   inline-size: 135px;
+  transition: transform 0.25s ease;
+}
+
+.skills-img:hover {
+  transform: scale(1.12);
 }
 
 @media (max-width: 1100px) {
@@ -1252,4 +1271,177 @@ body.dark .footer-link img {
 input:checked {
   --thumb-position: 100%;
   background-color: var(--track-active);
+}
+
+/* --------------------------------- */
+/* ----- Highlights Strip -----*/
+/* --------------------------------- */
+
+.highlights {
+  padding-block-start: 2rem !important;
+  padding-block-end: 0;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter-small);
+  text-align: center;
+}
+
+.highlight-card {
+  padding: var(--gutter-small) var(--gutter-micro);
+  border: 1px solid var(--border);
+  border-radius: var(--gutter-nano);
+  background-color: var(--bg-color-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.highlight-number {
+  font-size: var(--h3);
+  font-weight: 800;
+  font-stretch: 125%;
+  color: var(--important);
+  line-height: 1.1;
+}
+
+.highlight-label {
+  font-size: var(--text-small);
+  color: var(--body);
+  font-weight: 400;
+}
+
+@media (max-width: 845px) {
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 485px) {
+  .highlights-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter-micro);
+  }
+  .highlight-card {
+    padding: var(--gutter-micro) var(--gutter-nano);
+  }
+}
+
+/* --------------------------------- */
+/* ----- Testimonials Toggle -----*/
+/* --------------------------------- */
+
+.testimonial-extra {
+  /* hidden via inline style; shown by JS */
+}
+
+.testimonials.show-all .testimonial-extra {
+  display: flex;
+}
+
+.testimonials-toggle-wrap {
+  text-align: center;
+  margin-block-start: var(--gutter-medium);
+  margin-block-end: var(--gutter-small);
+}
+
+.testimonials-toggle {
+  font-size: 1.1rem;
+  padding: 14px 42px;
+  color: var(--important);
+  border: 2px solid var(--important);
+  background: var(--bg-color-secondary);
+  cursor: pointer;
+  border-radius: var(--gutter-nano);
+  transition: 0.3s all ease-in-out;
+}
+
+.testimonials-toggle:hover {
+  background: var(--important);
+  color: var(--bg-color-primary);
+}
+
+/* --------------------------------- */
+/* ----- Mobile Sticky CTA -----*/
+/* --------------------------------- */
+
+.mobile-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    background-color: var(--bg-color-secondary);
+    border-top: 1px solid var(--border-dark);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+  }
+
+  .mobile-cta-btn {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 200px;
+  }
+
+  /* Give footer some bottom padding so it's not hidden */
+  .footer {
+    padding-block-end: 5rem;
+  }
+}
+
+/* --------------------------------- */
+/* ----- Reduced-Motion -----*/
+/* --------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------- */
+/* ----- Improved Focus States -----*/
+/* --------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--important);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.btn:focus-visible {
+  outline-offset: 4px;
+}
+
+.menu-btn:focus-visible {
+  outline-offset: 4px;
+}
+
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --------------------------------- */
+/* ----- Smooth Scroll -----*/
+/* --------------------------------- */
+
+html {
+  scroll-behavior: smooth;
 }
