@@ -804,7 +804,9 @@ body.light .header {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  min-block-size: 22rem;
   padding-block-start: var(--gutter-x-large);
+  padding-block-end: var(--gutter-large);
 }
 
 @media (max-width: 885px) {
@@ -821,6 +823,8 @@ body.light .header {
   align-items: center;
   justify-content: center;
   position: relative;
+  min-block-size: 100%;
+  flex: 1;
 }
 
 .logo {
@@ -873,6 +877,8 @@ body.light .logo {
 
 /* Futuristic gradient zone from Selected Work onward */
 body.dark .work,
+body.dark .highlights,
+body.dark .client,
 body.dark .article,
 body.dark .skills,
 body.dark section:has(.testimonials),
@@ -881,6 +887,30 @@ body.dark .contact {
 }
 
 body.dark .work::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(115, 255, 225, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(215, 174, 251, 0.035) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 0%, rgba(10, 10, 20, 0) 5%, rgba(14, 14, 28, 0.6) 30%, rgba(14, 14, 28, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.dark .client::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(115, 255, 225, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(215, 174, 251, 0.035) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 0%, rgba(10, 10, 20, 0) 5%, rgba(14, 14, 28, 0.6) 30%, rgba(14, 14, 28, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.dark .highlights::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -938,6 +968,8 @@ body.dark .contact::before {
 
 /* Ensure content sits above the gradient overlays */
 body.dark .work > .container,
+body.dark .highlights > .container,
+body.dark .client > .container,
 body.dark .article > .container,
 body.dark .skills > .container,
 body.dark section:has(.testimonials) > .container,
@@ -958,7 +990,31 @@ body.light .work::before {
   z-index: 0;
 }
 
+body.light .client::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(10, 190, 170, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(124, 110, 196, 0.025) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.light .highlights::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(10, 190, 170, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(124, 110, 196, 0.025) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 body.light .work,
+body.light .highlights,
+body.light .client,
 body.light .article,
 body.light .skills,
 body.light section:has(.testimonials),
@@ -967,6 +1023,8 @@ body.light .contact {
 }
 
 body.light .work > .container,
+body.light .highlights > .container,
+body.light .client > .container,
 body.light .article > .container,
 body.light .skills > .container,
 body.light section:has(.testimonials) > .container,
@@ -1028,7 +1086,9 @@ body.light .deploy-card:hover .deploy-card-glow {
 .deploy-card-inner {
   position: relative;
   z-index: 1;
-  background: var(--glass-bg);
+  background:
+    linear-gradient(160deg, rgba(115, 255, 225, 0.08), rgba(215, 174, 251, 0.06) 45%, rgba(17, 17, 24, 0.72) 100%),
+    var(--glass-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--glass-border);
@@ -1038,7 +1098,8 @@ body.light .deploy-card:hover .deploy-card-glow {
 }
 
 body.light .deploy-card-inner {
-  background: rgba(255, 255, 255, 0.85);
+  background:
+    linear-gradient(160deg, rgba(10, 190, 170, 0.08), rgba(124, 110, 196, 0.06) 45%, rgba(255, 255, 255, 0.9) 100%);
   border-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -2178,8 +2239,10 @@ input:checked {
 }
 
 .highlight-card {
+  position: relative;
+  isolation: isolate;
   padding: var(--gutter-small) var(--gutter-micro);
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   border-radius: var(--gutter-nano);
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -2190,10 +2253,28 @@ input:checked {
   transition: all 0.4s ease;
 }
 
+.highlight-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-green));
+  opacity: 0.32;
+  z-index: -1;
+  transition: opacity 0.35s ease;
+}
+
 .highlight-card:hover {
-  border-color: var(--neon-green);
-  box-shadow: 0 0 20px var(--glow-green);
+  box-shadow: 0 0 20px var(--glow-cyan);
   transform: translateY(-3px);
+}
+
+.highlight-card:hover::before {
+  opacity: 0.55;
+}
+
+body.light .highlight-card::before {
+  opacity: 0.22;
 }
 
 .highlight-number {
