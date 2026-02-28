@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Blockchain Projects by Adharsh Unnikrishnan — Decentralized applications, smart contracts, and Web3 solutions."
+    />
+    <link rel="shortcut icon" href="assets/images/favicons.png" type="image/png" />
+    <link
+      rel="preload"
+      href="assets/fonts/Mona-Sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="blockchain.css" />
+    <script src="blockchain.js" defer></script>
+    <title>Blockchain Projects — Adharsh Unnikrishnan</title>
+  </head>
+
+  <body class="dark">
+    <script>
+      const theme = localStorage.getItem("theme") || "dark";
+      document.body.classList.remove("dark");
+      document.body.classList.add(theme);
+    </script>
+
+    <!-- Animated background canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Scanline overlay -->
+    <div class="scanline-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="bc-nav">
+      <div class="bc-container">
+        <a href="index.html" class="bc-back-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Portfolio</span>
+        </a>
+        <div class="bc-nav-right">
+          <span class="bc-chain-status">
+            <span class="bc-status-dot"></span>
+            <span>Chain Active</span>
+          </span>
+          <label class="bc-theme-switch" for="bc-theme-toggle">
+            <span>Dark</span>
+            <input type="checkbox" id="bc-theme-toggle" role="switch" />
+          </label>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bc-hero">
+      <div class="bc-container">
+        <div class="bc-hero-content">
+          <div class="bc-badge">
+            <span class="bc-badge-dot"></span>
+            WEB3 &middot; BLOCKCHAIN &middot; DECENTRALIZED
+          </div>
+          <h1 class="bc-hero-title">
+            <span class="bc-glitch" data-text="Blockchain">Blockchain</span>
+            <span class="bc-gradient-text">Projects</span>
+          </h1>
+          <p class="bc-hero-desc">
+            Exploring the decentralized frontier — from smart contracts and DeFi protocols 
+            to cross-chain infrastructure and on-chain governance systems.
+          </p>
+          <div class="bc-hero-stats">
+            <div class="bc-stat">
+              <span class="bc-stat-number" data-target="6">0</span>
+              <span class="bc-stat-label">Projects</span>
+            </div>
+            <div class="bc-stat-divider"></div>
+            <div class="bc-stat">
+              <span class="bc-stat-number" data-target="12">0</span>
+              <span class="bc-stat-label">Smart Contracts</span>
+            </div>
+            <div class="bc-stat-divider"></div>
+            <div class="bc-stat">
+              <span class="bc-stat-number" data-target="4">0</span>
+              <span class="bc-stat-label">Chains</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <main class="bc-main">
+      <div class="bc-container">
+
+        <!-- Project 1 -->
+        <article class="bc-project-card" data-chain="ethereum">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
+              </div>
+              <span class="bc-card-number">01</span>
+            </div>
+            <h2 class="bc-card-title">DeFi Yield Aggregator Protocol</h2>
+            <p class="bc-card-desc">
+              Built a multi-strategy yield aggregator that automatically routes user deposits 
+              across lending protocols (Aave, Compound) to maximize APY. Features auto-compounding 
+              vaults, gas-optimized harvesting, and a real-time analytics dashboard.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Solidity</span>
+              <span class="bc-tech-pill">Hardhat</span>
+              <span class="bc-tech-pill">OpenZeppelin</span>
+              <span class="bc-tech-pill">The Graph</span>
+              <span class="bc-tech-pill">React</span>
+              <span class="bc-tech-pill">Ethers.js</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">3</span>
+                  <span class="bc-metric-label">Contracts</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">98%</span>
+                  <span class="bc-metric-label">Test Coverage</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="bc-project-card" data-chain="multichain">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Multi-Chain
+              </div>
+              <span class="bc-card-number">02</span>
+            </div>
+            <h2 class="bc-card-title">Cross-Chain Bridge Architecture</h2>
+            <p class="bc-card-desc">
+              Designed and implemented a trust-minimized cross-chain bridge enabling token transfers 
+              between Ethereum and Polygon. Utilizes a relay network with validator consensus, 
+              Merkle proof verification, and lock-mint-burn mechanism for asset portability.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Solidity</span>
+              <span class="bc-tech-pill">Polygon</span>
+              <span class="bc-tech-pill">Chainlink</span>
+              <span class="bc-tech-pill">Node.js</span>
+              <span class="bc-tech-pill">Web3.js</span>
+              <span class="bc-tech-pill">Redis</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">2</span>
+                  <span class="bc-metric-label">Chains</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">&lt;30s</span>
+                  <span class="bc-metric-label">Finality</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="bc-project-card" data-chain="ethereum">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
+              </div>
+              <span class="bc-card-number">03</span>
+            </div>
+            <h2 class="bc-card-title">NFT Marketplace with Royalty Engine</h2>
+            <p class="bc-card-desc">
+              Full-stack NFT marketplace featuring lazy minting, Dutch auctions, and EIP-2981 
+              royalty enforcement. Built with upgradeable proxy contracts, IPFS metadata storage, 
+              and a sleek React frontend with wallet-based authentication.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Solidity</span>
+              <span class="bc-tech-pill">IPFS / Pinata</span>
+              <span class="bc-tech-pill">ERC-721</span>
+              <span class="bc-tech-pill">Next.js</span>
+              <span class="bc-tech-pill">Wagmi</span>
+              <span class="bc-tech-pill">Alchemy</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">5</span>
+                  <span class="bc-metric-label">Contracts</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">EIP-2981</span>
+                  <span class="bc-metric-label">Standard</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="bc-project-card" data-chain="polygon">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Polygon
+              </div>
+              <span class="bc-card-number">04</span>
+            </div>
+            <h2 class="bc-card-title">DAO Governance Platform</h2>
+            <p class="bc-card-desc">
+              On-chain governance framework with token-weighted voting, proposal lifecycle management, 
+              and timelocked execution. Implements delegation, quorum checks, and off-chain signature 
+              voting (EIP-712) for gas-free participation with Snapshot integration.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Solidity</span>
+              <span class="bc-tech-pill">OpenZeppelin Governor</span>
+              <span class="bc-tech-pill">Snapshot</span>
+              <span class="bc-tech-pill">TypeScript</span>
+              <span class="bc-tech-pill">Tailwind</span>
+              <span class="bc-tech-pill">Subgraph</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">EIP-712</span>
+                  <span class="bc-metric-label">Signatures</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">Gas-Free</span>
+                  <span class="bc-metric-label">Voting</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="bc-project-card" data-chain="hyperledger">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Hyperledger
+              </div>
+              <span class="bc-card-number">05</span>
+            </div>
+            <h2 class="bc-card-title">Supply Chain Transparency Tracker</h2>
+            <p class="bc-card-desc">
+              Enterprise supply chain solution on Hyperledger Fabric tracking goods from origin 
+              to consumer. Features immutable event logging, QR-code product verification, 
+              multi-org channel architecture, and a REST API gateway for ERP integration.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Hyperledger Fabric</span>
+              <span class="bc-tech-pill">Go Chaincode</span>
+              <span class="bc-tech-pill">Docker</span>
+              <span class="bc-tech-pill">Node.js</span>
+              <span class="bc-tech-pill">CouchDB</span>
+              <span class="bc-tech-pill">React</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">3</span>
+                  <span class="bc-metric-label">Organizations</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">Immutable</span>
+                  <span class="bc-metric-label">Audit Trail</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="bc-project-card" data-chain="ethereum">
+          <div class="bc-card-glow"></div>
+          <div class="bc-card-inner">
+            <div class="bc-card-header">
+              <div class="bc-chain-tag">
+                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
+              </div>
+              <span class="bc-card-number">06</span>
+            </div>
+            <h2 class="bc-card-title">Renewable Energy Trading DApp</h2>
+            <p class="bc-card-desc">
+              Peer-to-peer renewable energy trading platform built during HackVerse hackathon. 
+              Prosumers sell excess solar/wind energy directly via smart contracts. Integrates 
+              IoT meter data feeds, real-time price oracles, and a mobile companion app.
+            </p>
+            <div class="bc-card-tech">
+              <span class="bc-tech-pill">Solidity</span>
+              <span class="bc-tech-pill">Web3</span>
+              <span class="bc-tech-pill">MySQL</span>
+              <span class="bc-tech-pill">PHP</span>
+              <span class="bc-tech-pill">MIT App Inventor</span>
+              <span class="bc-tech-pill">Azure</span>
+            </div>
+            <div class="bc-card-footer">
+              <div class="bc-card-metrics">
+                <div class="bc-metric">
+                  <span class="bc-metric-value">Top 10</span>
+                  <span class="bc-metric-label">HackVerse</span>
+                </div>
+                <div class="bc-metric">
+                  <span class="bc-metric-value">500+</span>
+                  <span class="bc-metric-label">Participants</span>
+                </div>
+              </div>
+              <div class="bc-card-links">
+                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bc-footer">
+      <div class="bc-container">
+        <div class="bc-footer-content">
+          <a href="index.html" class="bc-footer-back">← Return to Main Portfolio</a>
+          <div class="bc-footer-links">
+            <a href="https://github.com/adharsh277" target="_blank" rel="noopener" title="GitHub">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/adharsh277/" target="_blank" rel="noopener" title="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/itsAdharsh" target="_blank" rel="noopener" title="Twitter">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="bc-footer-bottom">
+          <p>Built on the decentralized frontier &middot; Adharsh Unnikrishnan</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
