@@ -2,106 +2,140 @@
 /* Blockchain Projects — Interactive Scripts    */
 /* ============================================ */
 
-// ---- Particle Network Background ----
+// ---- Blockchain Network Background ----
 
-const canvas = document.getElementById("particle-canvas");
-const ctx = canvas.getContext("2d");
+const cloudCanvas = document.getElementById("cloud-canvas");
 
-let particles = [];
-let mouse = { x: null, y: null };
-let animFrameId;
+if (cloudCanvas) {
+  const ctx = cloudCanvas.getContext("2d");
+  let chainNodes = [];
+  let dashOffset = 0;
+  const NODE_COUNT = 40;
+  const MAX_CONNECTION_DISTANCE = 170;
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-class Particle {
-  constructor() {
-    this.reset();
+  function resizeCanvas() {
+    cloudCanvas.width = window.innerWidth;
+    cloudCanvas.height = window.innerHeight;
   }
 
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 1.5 + 0.5;
-    this.speedX = (Math.random() - 0.5) * 0.4;
-    this.speedY = (Math.random() - 0.5) * 0.4;
-    this.opacity = Math.random() * 0.5 + 0.1;
-  }
+  class CloudNode {
+    constructor() {
+      this.reset();
+    }
 
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
+    reset() {
+      this.x = Math.random() * cloudCanvas.width;
+      this.y = Math.random() * cloudCanvas.height;
+      this.size = Math.random() * 2.2 + 1.8;
+      this.speedX = (Math.random() - 0.5) * 0.9;
+      this.speedY = (Math.random() - 0.5) * 0.9;
+      this.opacity = Math.random() * 0.4 + 0.35;
+      this.pulsePhase = Math.random() * Math.PI * 2;
+      this.pulseSpeed = 0.02 + Math.random() * 0.03;
+    }
 
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-  }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.pulsePhase += this.pulseSpeed;
 
-  draw() {
-    const isDark = document.body.classList.contains("dark");
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = isDark
-      ? `rgba(0, 255, 166, ${this.opacity})`
-      : `rgba(0, 150, 100, ${this.opacity * 0.5})`;
-    ctx.fill();
-  }
-}
+      if (this.x < this.size || this.x > cloudCanvas.width - this.size) {
+        this.speedX *= -1;
+        this.x = Math.max(this.size, Math.min(cloudCanvas.width - this.size, this.x));
+      }
 
-function initParticles() {
-  particles = [];
-  const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
-  for (let i = 0; i < count; i++) {
-    particles.push(new Particle());
-  }
-}
-
-function drawConnections() {
-  const isDark = document.body.classList.contains("dark");
-  const maxDist = 150;
-
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < maxDist) {
-        const opacity = (1 - dist / maxDist) * 0.15;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = isDark
-          ? `rgba(0, 255, 166, ${opacity})`
-          : `rgba(0, 120, 80, ${opacity * 0.6})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+      if (this.y < this.size || this.y > cloudCanvas.height - this.size) {
+        this.speedY *= -1;
+        this.y = Math.max(this.size, Math.min(cloudCanvas.height - this.size, this.y));
       }
     }
+
+    draw() {
+      const pulse = Math.sin(this.pulsePhase) * 0.15 + 0.85;
+      const finalOpacity = this.opacity * pulse;
+      const isDark = document.body.classList.contains("dark");
+
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = isDark
+        ? `rgba(255, 215, 0, ${finalOpacity})`
+        : `rgba(173, 111, 0, ${Math.min(finalOpacity, 0.8)})`;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 2.6, 0, Math.PI * 2);
+      ctx.fillStyle = isDark
+        ? `rgba(247, 147, 26, ${finalOpacity * 0.14})`
+        : `rgba(247, 147, 26, ${finalOpacity * 0.08})`;
+      ctx.fill();
+    }
   }
-}
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function initCloudNetwork() {
+    chainNodes = [];
+    for (let i = 0; i < NODE_COUNT; i++) {
+      chainNodes.push(new CloudNode());
+    }
+  }
 
-  particles.forEach((p) => {
-    p.update();
-    p.draw();
+  function animateCloudNetwork() {
+    ctx.clearRect(0, 0, cloudCanvas.width, cloudCanvas.height);
+    dashOffset -= 0.55;
+
+    for (let i = 0; i < chainNodes.length; i++) {
+      for (let j = i + 1; j < chainNodes.length; j++) {
+        const dx = chainNodes[i].x - chainNodes[j].x;
+        const dy = chainNodes[i].y - chainNodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < MAX_CONNECTION_DISTANCE) {
+          const isDark = document.body.classList.contains("dark");
+          const opacity = (1 - dist / MAX_CONNECTION_DISTANCE) * 0.35;
+          const gradient = ctx.createLinearGradient(
+            chainNodes[i].x,
+            chainNodes[i].y,
+            chainNodes[j].x,
+            chainNodes[j].y
+          );
+
+          if (isDark) {
+            gradient.addColorStop(0, `rgba(255, 215, 0, ${opacity})`);
+            gradient.addColorStop(1, `rgba(247, 147, 26, ${opacity * 0.8})`);
+          } else {
+            gradient.addColorStop(0, `rgba(173, 111, 0, ${opacity * 0.85})`);
+            gradient.addColorStop(1, `rgba(247, 147, 26, ${opacity * 0.75})`);
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(chainNodes[i].x, chainNodes[i].y);
+          ctx.lineTo(chainNodes[j].x, chainNodes[j].y);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 0.65;
+          ctx.setLineDash([4, 9]);
+          ctx.lineDashOffset = dashOffset;
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+    }
+
+    chainNodes.forEach((node) => {
+      node.update();
+      node.draw();
+    });
+
+    requestAnimationFrame(animateCloudNetwork);
+  }
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    initCloudNetwork();
   });
 
-  drawConnections();
-  animFrameId = requestAnimationFrame(animateParticles);
-}
-
-window.addEventListener("resize", () => {
   resizeCanvas();
-  initParticles();
-});
-
-resizeCanvas();
-initParticles();
-animateParticles();
+  initCloudNetwork();
+  animateCloudNetwork();
+}
 
 // ---- Stat Counter Animation ----
 
