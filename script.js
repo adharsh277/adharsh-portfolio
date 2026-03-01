@@ -2,23 +2,22 @@
 // Cloud & DevOps Portfolio — Futuristic Scripts
 // ============================================
 
-// ---- Cloud Network Canvas Background ----
-// Floating cloud nodes with pipeline connections (DevOps-themed)
+// ---- Blockchain Network Canvas Background ----
+// 40 floating nodes with bounce physics and flowing gold connections
 
 const cloudCanvas = document.getElementById("cloud-canvas");
 
 if (cloudCanvas) {
   const ctx = cloudCanvas.getContext("2d");
-  let cloudNodes = [];
-  let pipelines = [];
+  let chainNodes = [];
+  let dashOffset = 0;
+  const NODE_COUNT = 40;
+  const MAX_CONNECTION_DISTANCE = 170;
 
   function resizeCanvas() {
     cloudCanvas.width = window.innerWidth;
     cloudCanvas.height = window.innerHeight;
   }
-
-  // Cloud node shapes: small hexagons, circles, diamonds
-  const nodeShapes = ["circle", "hexagon", "diamond"];
 
   class CloudNode {
     constructor() {
@@ -28,13 +27,12 @@ if (cloudCanvas) {
     reset() {
       this.x = Math.random() * cloudCanvas.width;
       this.y = Math.random() * cloudCanvas.height;
-      this.size = Math.random() * 3 + 1.5;
-      this.speedX = (Math.random() - 0.5) * 0.3;
-      this.speedY = (Math.random() - 0.5) * 0.3;
-      this.opacity = Math.random() * 0.4 + 0.1;
-      this.shape = nodeShapes[Math.floor(Math.random() * nodeShapes.length)];
+      this.size = Math.random() * 2.2 + 1.8;
+      this.speedX = (Math.random() - 0.5) * 0.9;
+      this.speedY = (Math.random() - 0.5) * 0.9;
+      this.opacity = Math.random() * 0.4 + 0.35;
       this.pulsePhase = Math.random() * Math.PI * 2;
-      this.pulseSpeed = 0.01 + Math.random() * 0.02;
+      this.pulseSpeed = 0.02 + Math.random() * 0.03;
     }
 
     update() {
@@ -42,160 +40,87 @@ if (cloudCanvas) {
       this.y += this.speedY;
       this.pulsePhase += this.pulseSpeed;
 
-      if (this.x < -20) this.x = cloudCanvas.width + 20;
-      if (this.x > cloudCanvas.width + 20) this.x = -20;
-      if (this.y < -20) this.y = cloudCanvas.height + 20;
-      if (this.y > cloudCanvas.height + 20) this.y = -20;
+      if (this.x < this.size || this.x > cloudCanvas.width - this.size) {
+        this.speedX *= -1;
+        this.x = Math.max(this.size, Math.min(cloudCanvas.width - this.size, this.x));
+      }
+
+      if (this.y < this.size || this.y > cloudCanvas.height - this.size) {
+        this.speedY *= -1;
+        this.y = Math.max(this.size, Math.min(cloudCanvas.height - this.size, this.y));
+      }
     }
 
     draw() {
-      const isDark = document.body.classList.contains("dark");
       const pulse = Math.sin(this.pulsePhase) * 0.15 + 0.85;
       const finalOpacity = this.opacity * pulse;
-      const baseColor = isDark ? [0, 255, 166] : [0, 150, 100];
-
-      ctx.save();
-      ctx.globalAlpha = finalOpacity;
-      ctx.fillStyle = `rgb(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]})`;
-      ctx.translate(this.x, this.y);
-
-      if (this.shape === "circle") {
-        ctx.beginPath();
-        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      } else if (this.shape === "hexagon") {
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-          const angle = (Math.PI / 3) * i - Math.PI / 6;
-          const px = Math.cos(angle) * this.size;
-          const py = Math.sin(angle) * this.size;
-          if (i === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
-        }
-        ctx.closePath();
-        ctx.fill();
-      } else {
-        ctx.beginPath();
-        ctx.moveTo(0, -this.size);
-        ctx.lineTo(this.size, 0);
-        ctx.lineTo(0, this.size);
-        ctx.lineTo(-this.size, 0);
-        ctx.closePath();
-        ctx.fill();
-      }
-
-      ctx.restore();
-    }
-  }
-
-  // Animated pipeline segments flowing between nodes
-  class Pipeline {
-    constructor(nodeA, nodeB) {
-      this.nodeA = nodeA;
-      this.nodeB = nodeB;
-      this.progress = 0;
-      this.speed = 0.003 + Math.random() * 0.005;
-      this.active = true;
-    }
-
-    update() {
-      this.progress += this.speed;
-      if (this.progress > 1) {
-        this.progress = 0;
-      }
-    }
-
-    draw() {
       const isDark = document.body.classList.contains("dark");
-      const dx = this.nodeB.x - this.nodeA.x;
-      const dy = this.nodeB.y - this.nodeA.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist > 200) return;
-
-      const lineOpacity = (1 - dist / 200) * 0.12;
-
-      // Static connection line
       ctx.beginPath();
-      ctx.moveTo(this.nodeA.x, this.nodeA.y);
-      ctx.lineTo(this.nodeB.x, this.nodeB.y);
-      ctx.strokeStyle = isDark
-        ? `rgba(0, 255, 166, ${lineOpacity})`
-        : `rgba(0, 120, 80, ${lineOpacity * 0.7})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-
-      // Flowing data packet along the pipeline
-      const packetX = this.nodeA.x + dx * this.progress;
-      const packetY = this.nodeA.y + dy * this.progress;
-      const packetOpacity = lineOpacity * 3;
-
-      ctx.beginPath();
-      ctx.arc(packetX, packetY, 1.5, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = isDark
-        ? `rgba(115, 255, 225, ${packetOpacity})`
-        : `rgba(0, 200, 130, ${packetOpacity})`;
+        ? `rgba(255, 215, 0, ${finalOpacity})`
+        : `rgba(173, 111, 0, ${Math.min(finalOpacity, 0.8)})`;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 2.6, 0, Math.PI * 2);
+      ctx.fillStyle = isDark
+        ? `rgba(247, 147, 26, ${finalOpacity * 0.14})`
+        : `rgba(247, 147, 26, ${finalOpacity * 0.08})`;
       ctx.fill();
     }
   }
 
   function initCloudNetwork() {
-    cloudNodes = [];
-    pipelines = [];
-    const nodeCount = Math.min(
-      Math.floor((cloudCanvas.width * cloudCanvas.height) / 14000),
-      100
-    );
-
-    for (let i = 0; i < nodeCount; i++) {
-      cloudNodes.push(new CloudNode());
-    }
-
-    // Create pipelines between nearby nodes
-    for (let i = 0; i < cloudNodes.length; i++) {
-      for (let j = i + 1; j < cloudNodes.length; j++) {
-        const dx = cloudNodes[i].x - cloudNodes[j].x;
-        const dy = cloudNodes[i].y - cloudNodes[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200 && Math.random() < 0.3) {
-          pipelines.push(new Pipeline(cloudNodes[i], cloudNodes[j]));
-        }
-      }
+    chainNodes = [];
+    for (let i = 0; i < NODE_COUNT; i++) {
+      chainNodes.push(new CloudNode());
     }
   }
 
   function animateCloudNetwork() {
     ctx.clearRect(0, 0, cloudCanvas.width, cloudCanvas.height);
 
-    // Draw connections/pipelines
-    pipelines.forEach((p) => {
-      p.update();
-      p.draw();
-    });
+    dashOffset -= 0.55;
 
-    // Also draw dynamic connections between nearby nodes
-    for (let i = 0; i < cloudNodes.length; i++) {
-      for (let j = i + 1; j < cloudNodes.length; j++) {
-        const dx = cloudNodes[i].x - cloudNodes[j].x;
-        const dy = cloudNodes[i].y - cloudNodes[j].y;
+    for (let i = 0; i < chainNodes.length; i++) {
+      for (let j = i + 1; j < chainNodes.length; j++) {
+        const dx = chainNodes[i].x - chainNodes[j].x;
+        const dy = chainNodes[i].y - chainNodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
+
+        if (dist < MAX_CONNECTION_DISTANCE) {
           const isDark = document.body.classList.contains("dark");
-          const opacity = (1 - dist / 150) * 0.08;
+          const opacity = (1 - dist / MAX_CONNECTION_DISTANCE) * 0.35;
+          const gradient = ctx.createLinearGradient(
+            chainNodes[i].x,
+            chainNodes[i].y,
+            chainNodes[j].x,
+            chainNodes[j].y
+          );
+
+          if (isDark) {
+            gradient.addColorStop(0, `rgba(255, 215, 0, ${opacity})`);
+            gradient.addColorStop(1, `rgba(247, 147, 26, ${opacity * 0.8})`);
+          } else {
+            gradient.addColorStop(0, `rgba(173, 111, 0, ${opacity * 0.85})`);
+            gradient.addColorStop(1, `rgba(247, 147, 26, ${opacity * 0.75})`);
+          }
+
           ctx.beginPath();
-          ctx.moveTo(cloudNodes[i].x, cloudNodes[i].y);
-          ctx.lineTo(cloudNodes[j].x, cloudNodes[j].y);
-          ctx.strokeStyle = isDark
-            ? `rgba(255, 90, 112, ${opacity})`
-            : `rgba(180, 50, 70, ${opacity * 0.5})`;
-          ctx.lineWidth = 0.3;
+          ctx.moveTo(chainNodes[i].x, chainNodes[i].y);
+          ctx.lineTo(chainNodes[j].x, chainNodes[j].y);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 0.65;
+          ctx.setLineDash([4, 9]);
+          ctx.lineDashOffset = dashOffset;
           ctx.stroke();
+          ctx.setLineDash([]);
         }
       }
     }
 
-    // Draw nodes
-    cloudNodes.forEach((node) => {
+    chainNodes.forEach((node) => {
       node.update();
       node.draw();
     });

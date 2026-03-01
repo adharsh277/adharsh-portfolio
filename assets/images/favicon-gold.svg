@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gold blockchain favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#050507"/>
+      <stop offset="100%" stop-color="#0A0A0F"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#F7931A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#FFD700" stroke-opacity="0.45"/>
+
+  <g stroke="url(#gold)" stroke-width="2.6" fill="none" stroke-linecap="round" filter="url(#glow)">
+    <path d="M20 20 L32 14 L44 20"/>
+    <path d="M20 44 L32 50 L44 44"/>
+    <path d="M20 20 L20 44"/>
+    <path d="M44 20 L44 44"/>
+    <path d="M20 20 L32 28 L44 20"/>
+    <path d="M20 44 L32 36 L44 44"/>
+  </g>
+
+  <g fill="#FFD700" filter="url(#glow)">
+    <circle cx="20" cy="20" r="2.4"/>
+    <circle cx="44" cy="20" r="2.4"/>
+    <circle cx="20" cy="44" r="2.4"/>
+    <circle cx="44" cy="44" r="2.4"/>
+    <circle cx="32" cy="14" r="2.1"/>
+    <circle cx="32" cy="50" r="2.1"/>
+  </g>
+</svg>
