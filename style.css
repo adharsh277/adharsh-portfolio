@@ -1051,20 +1051,26 @@ body.light .contact > .container {
 
 .deploy-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.5rem;
   padding-block-start: var(--gutter-x-large);
+}
+
+@media (max-width: 980px) {
+  .deploy-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- Deployment Card --- */
 .deploy-card {
   position: relative;
   border-radius: 16px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .deploy-card:hover {
-  transform: translateY(-6px);
+  transform: none;
 }
 
 /* Outer glow layer — shifted to cyan-purple blend */
@@ -1072,24 +1078,24 @@ body.light .contact > .container {
   position: absolute;
   inset: -1px;
   border-radius: 17px;
-  background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary), var(--gold-accent));
+  background: linear-gradient(135deg, var(--glass-border), var(--border-glow), var(--glass-border));
   background-size: 300% 300%;
-  opacity: 0.25;
+  opacity: 0.14;
   z-index: 0;
   transition: opacity 0.4s ease;
 }
 
 .deploy-card:hover .deploy-card-glow {
-  opacity: 0.55;
-}
-
-body.light .deploy-card-glow {
-  background: linear-gradient(135deg, #b67a00, #f7931a, #c68a00);
   opacity: 0.18;
 }
 
+body.light .deploy-card-glow {
+  background: linear-gradient(135deg, var(--glass-border), var(--border-glow), var(--glass-border));
+  opacity: 0.12;
+}
+
 body.light .deploy-card:hover .deploy-card-glow {
-  opacity: 0.35;
+  opacity: 0.16;
 }
 
 /* Inner card glass */
@@ -1097,7 +1103,7 @@ body.light .deploy-card:hover .deploy-card-glow {
   position: relative;
   z-index: 1;
   background:
-    linear-gradient(160deg, rgba(255, 215, 0, 0.08), rgba(247, 147, 26, 0.06) 45%, rgba(8, 8, 12, 0.55) 100%);
+    linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02) 45%, rgba(8, 8, 12, 0.55) 100%);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--glass-border);
@@ -1108,8 +1114,18 @@ body.light .deploy-card:hover .deploy-card-glow {
 
 body.light .deploy-card-inner {
   background:
-    linear-gradient(160deg, rgba(247, 147, 26, 0.08), rgba(255, 215, 0, 0.06) 45%, rgba(8, 8, 12, 0.58) 100%);
-  border-color: rgba(255, 215, 0, 0.18);
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02) 45%, rgba(8, 8, 12, 0.58) 100%);
+  border-color: var(--glass-border);
+}
+
+.deploy-card-inner.glass-card-premium:hover {
+  border-color: var(--glass-border);
+  box-shadow: none;
+}
+
+body.light .deploy-card-inner.glass-card-premium:hover {
+  border-color: var(--glass-border);
+  box-shadow: none;
 }
 
 /* Top bar: status + index */
@@ -1201,37 +1217,37 @@ body.light .deploy-title {
   display: flex;
   align-items: center;
   gap: 0;
-  margin-block-end: 1.5rem;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 215, 0, 0.03);
-  border: 1px solid rgba(255, 215, 0, 0.08);
-  border-radius: 10px;
+  margin-block-end: 1rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
   overflow-x: auto;
 }
 
 body.light .deploy-pipeline {
-  background: rgba(255, 215, 0, 0.03);
-  border-color: rgba(255, 215, 0, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--glass-border);
 }
 
 .pipeline-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.25rem;
   flex-shrink: 0;
 }
 
 .pipeline-icon {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
@@ -1271,9 +1287,9 @@ body.light .pipeline-stage.live .pipeline-icon {
 
 .pipeline-label {
   font-family: 'Courier New', monospace;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   opacity: 0.6;
 }
@@ -1297,34 +1313,25 @@ body.light .pipeline-stage.live .pipeline-label {
 
 .pipeline-connector {
   flex: 1;
-  height: 2px;
-  min-width: 30px;
-  margin-inline: 0.3rem;
-  background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary));
-  opacity: 0.3;
+  height: 1px;
+  min-width: 22px;
+  margin-inline: 0.25rem;
+  background: var(--border-glow);
+  opacity: 0.45;
   position: relative;
-  margin-block-end: 1.2rem;
+  margin-block-end: 0.95rem;
 }
 
 .pipeline-connector::after {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 30%;
-  height: 4px;
-  background: var(--gold-primary);
-  border-radius: 2px;
-  box-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+  content: none;
 }
 
 body.light .pipeline-connector {
-  background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary));
+  background: var(--border-glow);
 }
 
 body.light .pipeline-connector::after {
-  background: var(--gold-primary);
-  box-shadow: 0 0 4px rgba(255, 215, 0, 0.3);
+  content: none;
 }
 
 /* ---- Tech Pills — cyan tones ---- */
@@ -1473,11 +1480,11 @@ body.light .deploy-link-primary:hover {
 
 /* Dark mode hover on card — softer shadow */
 body.dark .deploy-card:hover {
-  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.08), 0 0 30px rgba(247, 147, 26, 0.05);
+  box-shadow: none;
 }
 
 body.light .deploy-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 /* ---- Responsive ---- */
