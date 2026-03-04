@@ -10,6 +10,7 @@ This is my personal portfolio website, built to showcase my **skills, projects, 
 - **HTML, CSS, JavaScript**
 - Deployed with **GitHub Pages** Vercel
 
+
 ## 📌 Live Demo
  👉 [View Portfolio](https://adharsh-portfolio-omega.vercel.app/)
 
