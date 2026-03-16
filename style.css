@@ -859,6 +859,7 @@ body.light .header {
 .header-btns {
   display: inline-flex;
   gap: var(--gutter-x-small);
+  margin-block-start: 1.1rem;
 }
 
 .header-btns .btn {
