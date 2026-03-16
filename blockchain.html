@@ -76,18 +76,18 @@
           </p>
           <div class="bc-hero-stats">
             <div class="bc-stat">
-              <span class="bc-stat-number" data-target="6">0</span>
+              <span class="bc-stat-number" data-target="3">0</span>
               <span class="bc-stat-label">Projects</span>
             </div>
             <div class="bc-stat-divider"></div>
             <div class="bc-stat">
-              <span class="bc-stat-number" data-target="12">0</span>
-              <span class="bc-stat-label">Smart Contracts</span>
+              <span class="bc-stat-number" data-target="3">0</span>
+              <span class="bc-stat-label">Live dApps</span>
             </div>
             <div class="bc-stat-divider"></div>
             <div class="bc-stat">
-              <span class="bc-stat-number" data-target="4">0</span>
-              <span class="bc-stat-label">Chains</span>
+              <span class="bc-stat-number" data-target="2">0</span>
+              <span class="bc-stat-label">Ecosystems</span>
             </div>
           </div>
         </div>
@@ -99,44 +99,72 @@
       <div class="bc-container">
 
         <!-- Project 1 -->
-        <article class="bc-project-card" data-chain="ethereum">
+        <article class="bc-project-card" data-chain="bitcoin">
           <div class="bc-card-glow"></div>
           <div class="bc-card-inner">
             <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
+              <div class="bc-deploy-status">
+                <span class="bc-deploy-status-dot"></span>
+                <span class="bc-deploy-status-text">DEPLOYED</span>
               </div>
               <span class="bc-card-number">01</span>
             </div>
-            <h2 class="bc-card-title">DeFi Yield Aggregator Protocol</h2>
+
+            <h2 class="bc-card-title">Bitcoin Smart Escrow dApp</h2>
             <p class="bc-card-desc">
-              Built a multi-strategy yield aggregator that automatically routes user deposits 
-              across lending protocols (Aave, Compound) to maximize APY. Features auto-compounding 
-              vaults, gas-optimized harvesting, and a real-time analytics dashboard.
+              A Bitcoin testnet decentralized application that enables users to create non-custodial escrow contracts using native Bitcoin scripting. 
+              Supports time-based escrow with OP_CHECKLOCKTIMEVERIFY and dual-approval 2-of-2 multisig flows, with PSBT signing, Xverse wallet integration, 
+              and real-time escrow/funding status via mempool.space APIs.
             </p>
+
+            <div class="bc-deploy-pipeline">
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Script</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Wallet</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">PSBT</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage live">
+                <span class="bc-pipeline-icon">&#x25CF;</span>
+                <span class="bc-pipeline-label">Monitor</span>
+              </div>
+            </div>
+
             <div class="bc-card-tech">
-              <span class="bc-tech-pill">Solidity</span>
-              <span class="bc-tech-pill">Hardhat</span>
-              <span class="bc-tech-pill">OpenZeppelin</span>
-              <span class="bc-tech-pill">The Graph</span>
-              <span class="bc-tech-pill">React</span>
-              <span class="bc-tech-pill">Ethers.js</span>
+              <span class="bc-tech-pill">Next.js 14</span>
+              <span class="bc-tech-pill">TypeScript</span>
+              <span class="bc-tech-pill">bitcoinjs-lib</span>
+              <span class="bc-tech-pill">Xverse Wallet</span>
+              <span class="bc-tech-pill">Zustand</span>
+              <span class="bc-tech-pill">TailwindCSS</span>
             </div>
             <div class="bc-card-footer">
               <div class="bc-card-metrics">
                 <div class="bc-metric">
-                  <span class="bc-metric-value">3</span>
-                  <span class="bc-metric-label">Contracts</span>
+                  <span class="bc-metric-value">Timelock</span>
+                  <span class="bc-metric-label">Escrow</span>
                 </div>
                 <div class="bc-metric">
-                  <span class="bc-metric-value">98%</span>
-                  <span class="bc-metric-label">Test Coverage</span>
+                  <span class="bc-metric-value">2-of-2</span>
+                  <span class="bc-metric-label">Multisig</span>
                 </div>
               </div>
               <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                <a href="https://github.com/adharsh277/midl" target="_blank" rel="noopener" class="bc-link-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
+                  Source Code
+                </a>
+                <a href="https://midl-dapp.vercel.app" target="_blank" rel="noopener" class="bc-link-btn bc-link-btn-primary">
+                  Explore &rarr;
                 </a>
               </div>
             </div>
@@ -144,44 +172,72 @@
         </article>
 
         <!-- Project 2 -->
-        <article class="bc-project-card" data-chain="multichain">
+        <article class="bc-project-card" data-chain="sepolia">
           <div class="bc-card-glow"></div>
           <div class="bc-card-inner">
             <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Multi-Chain
+              <div class="bc-deploy-status">
+                <span class="bc-deploy-status-dot"></span>
+                <span class="bc-deploy-status-text">DEPLOYED</span>
               </div>
               <span class="bc-card-number">02</span>
             </div>
-            <h2 class="bc-card-title">Cross-Chain Bridge Architecture</h2>
+
+            <h2 class="bc-card-title">AURA-T - Autonomous Stable Treasury Agent</h2>
             <p class="bc-card-desc">
-              Designed and implemented a trust-minimized cross-chain bridge enabling token transfers 
-              between Ethereum and Polygon. Utilizes a relay network with validator consensus, 
-              Merkle proof verification, and lock-mint-burn mechanism for asset portability.
+              AI-driven autonomous treasury management system for stable crypto assets. 
+              Uses an Observe - Evaluate - Plan - Execute - Log - Adapt control loop to rebalance across yield, 
+              hedge, and safe strategies, with risk reporting, on-chain decision logs, and live execution via MetaMask on Sepolia.
             </p>
+
+            <div class="bc-deploy-pipeline">
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Observe</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Evaluate</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Execute</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage live">
+                <span class="bc-pipeline-icon">&#x25CF;</span>
+                <span class="bc-pipeline-label">Adapt</span>
+              </div>
+            </div>
+
             <div class="bc-card-tech">
+              <span class="bc-tech-pill">Next.js 14</span>
+              <span class="bc-tech-pill">Node.js / Express</span>
+              <span class="bc-tech-pill">TypeScript</span>
               <span class="bc-tech-pill">Solidity</span>
-              <span class="bc-tech-pill">Polygon</span>
-              <span class="bc-tech-pill">Chainlink</span>
-              <span class="bc-tech-pill">Node.js</span>
-              <span class="bc-tech-pill">Web3.js</span>
-              <span class="bc-tech-pill">Redis</span>
+              <span class="bc-tech-pill">WebSockets</span>
+              <span class="bc-tech-pill">TailwindCSS</span>
             </div>
             <div class="bc-card-footer">
               <div class="bc-card-metrics">
                 <div class="bc-metric">
-                  <span class="bc-metric-value">2</span>
-                  <span class="bc-metric-label">Chains</span>
+                  <span class="bc-metric-value">Autonomous</span>
+                  <span class="bc-metric-label">Agent Loop</span>
                 </div>
                 <div class="bc-metric">
-                  <span class="bc-metric-value">&lt;30s</span>
-                  <span class="bc-metric-label">Finality</span>
+                  <span class="bc-metric-value">Sepolia</span>
+                  <span class="bc-metric-label">Live Tx</span>
                 </div>
               </div>
               <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                <a href="https://github.com/adharsh277/AURA" target="_blank" rel="noopener" class="bc-link-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
+                  Source Code
+                </a>
+                <a href="https://aura-t.vercel.app" target="_blank" rel="noopener" class="bc-link-btn bc-link-btn-primary">
+                  Explore &rarr;
                 </a>
               </div>
             </div>
@@ -189,185 +245,79 @@
         </article>
 
         <!-- Project 3 -->
-        <article class="bc-project-card" data-chain="ethereum">
+        <article class="bc-project-card" data-chain="evm">
           <div class="bc-card-glow"></div>
           <div class="bc-card-inner">
             <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
+              <div class="bc-deploy-status">
+                <span class="bc-deploy-status-dot"></span>
+                <span class="bc-deploy-status-text">DEPLOYED</span>
               </div>
               <span class="bc-card-number">03</span>
             </div>
-            <h2 class="bc-card-title">NFT Marketplace with Royalty Engine</h2>
+
+            <h2 class="bc-card-title">TLOOT - GameFi Social Ticketing Platform</h2>
             <p class="bc-card-desc">
-              Full-stack NFT marketplace featuring lazy minting, Dutch auctions, and EIP-2981 
-              royalty enforcement. Built with upgradeable proxy contracts, IPFS metadata storage, 
-              and a sleek React frontend with wallet-based authentication.
+              Blockchain platform for collaborative event ticket funding with commit-to-claim pool mechanics. 
+              Users co-fund premium tickets, receive 1:1 TLOOT token rewards, and participate in Lucky Draw pools 
+              using verifiable randomness from Supra dVRF for transparent winner selection.
             </p>
+
+            <div class="bc-deploy-pipeline">
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Pool</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">Fund</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage completed">
+                <span class="bc-pipeline-icon">&#x2713;</span>
+                <span class="bc-pipeline-label">dVRF</span>
+              </div>
+              <div class="bc-pipeline-connector"></div>
+              <div class="bc-pipeline-stage live">
+                <span class="bc-pipeline-icon">&#x25CF;</span>
+                <span class="bc-pipeline-label">Claim</span>
+              </div>
+            </div>
+
             <div class="bc-card-tech">
-              <span class="bc-tech-pill">Solidity</span>
-              <span class="bc-tech-pill">IPFS / Pinata</span>
-              <span class="bc-tech-pill">ERC-721</span>
               <span class="bc-tech-pill">Next.js</span>
-              <span class="bc-tech-pill">Wagmi</span>
-              <span class="bc-tech-pill">Alchemy</span>
-            </div>
-            <div class="bc-card-footer">
-              <div class="bc-card-metrics">
-                <div class="bc-metric">
-                  <span class="bc-metric-value">5</span>
-                  <span class="bc-metric-label">Contracts</span>
-                </div>
-                <div class="bc-metric">
-                  <span class="bc-metric-value">EIP-2981</span>
-                  <span class="bc-metric-label">Standard</span>
-                </div>
-              </div>
-              <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="bc-project-card" data-chain="polygon">
-          <div class="bc-card-glow"></div>
-          <div class="bc-card-inner">
-            <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Polygon
-              </div>
-              <span class="bc-card-number">04</span>
-            </div>
-            <h2 class="bc-card-title">DAO Governance Platform</h2>
-            <p class="bc-card-desc">
-              On-chain governance framework with token-weighted voting, proposal lifecycle management, 
-              and timelocked execution. Implements delegation, quorum checks, and off-chain signature 
-              voting (EIP-712) for gas-free participation with Snapshot integration.
-            </p>
-            <div class="bc-card-tech">
-              <span class="bc-tech-pill">Solidity</span>
-              <span class="bc-tech-pill">OpenZeppelin Governor</span>
-              <span class="bc-tech-pill">Snapshot</span>
-              <span class="bc-tech-pill">TypeScript</span>
-              <span class="bc-tech-pill">Tailwind</span>
-              <span class="bc-tech-pill">Subgraph</span>
-            </div>
-            <div class="bc-card-footer">
-              <div class="bc-card-metrics">
-                <div class="bc-metric">
-                  <span class="bc-metric-value">EIP-712</span>
-                  <span class="bc-metric-label">Signatures</span>
-                </div>
-                <div class="bc-metric">
-                  <span class="bc-metric-value">Gas-Free</span>
-                  <span class="bc-metric-label">Voting</span>
-                </div>
-              </div>
-              <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 5 -->
-        <article class="bc-project-card" data-chain="hyperledger">
-          <div class="bc-card-glow"></div>
-          <div class="bc-card-inner">
-            <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Hyperledger
-              </div>
-              <span class="bc-card-number">05</span>
-            </div>
-            <h2 class="bc-card-title">Supply Chain Transparency Tracker</h2>
-            <p class="bc-card-desc">
-              Enterprise supply chain solution on Hyperledger Fabric tracking goods from origin 
-              to consumer. Features immutable event logging, QR-code product verification, 
-              multi-org channel architecture, and a REST API gateway for ERP integration.
-            </p>
-            <div class="bc-card-tech">
-              <span class="bc-tech-pill">Hyperledger Fabric</span>
-              <span class="bc-tech-pill">Go Chaincode</span>
-              <span class="bc-tech-pill">Docker</span>
-              <span class="bc-tech-pill">Node.js</span>
-              <span class="bc-tech-pill">CouchDB</span>
               <span class="bc-tech-pill">React</span>
-            </div>
-            <div class="bc-card-footer">
-              <div class="bc-card-metrics">
-                <div class="bc-metric">
-                  <span class="bc-metric-value">3</span>
-                  <span class="bc-metric-label">Organizations</span>
-                </div>
-                <div class="bc-metric">
-                  <span class="bc-metric-value">Immutable</span>
-                  <span class="bc-metric-label">Audit Trail</span>
-                </div>
-              </div>
-              <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 6 -->
-        <article class="bc-project-card" data-chain="ethereum">
-          <div class="bc-card-glow"></div>
-          <div class="bc-card-inner">
-            <div class="bc-card-header">
-              <div class="bc-chain-tag">
-                <span class="bc-chain-icon">&#x2B22;</span> Ethereum
-              </div>
-              <span class="bc-card-number">06</span>
-            </div>
-            <h2 class="bc-card-title">Renewable Energy Trading DApp</h2>
-            <p class="bc-card-desc">
-              Peer-to-peer renewable energy trading platform built during HackVerse hackathon. 
-              Prosumers sell excess solar/wind energy directly via smart contracts. Integrates 
-              IoT meter data feeds, real-time price oracles, and a mobile companion app.
-            </p>
-            <div class="bc-card-tech">
+              <span class="bc-tech-pill">TypeScript</span>
               <span class="bc-tech-pill">Solidity</span>
-              <span class="bc-tech-pill">Web3</span>
-              <span class="bc-tech-pill">MySQL</span>
-              <span class="bc-tech-pill">PHP</span>
-              <span class="bc-tech-pill">MIT App Inventor</span>
-              <span class="bc-tech-pill">Azure</span>
+              <span class="bc-tech-pill">Wagmi + Viem</span>
+              <span class="bc-tech-pill">RainbowKit</span>
+              <span class="bc-tech-pill">Hardhat</span>
+              <span class="bc-tech-pill">OpenZeppelin</span>
             </div>
             <div class="bc-card-footer">
               <div class="bc-card-metrics">
                 <div class="bc-metric">
-                  <span class="bc-metric-value">Top 10</span>
-                  <span class="bc-metric-label">HackVerse</span>
+                  <span class="bc-metric-value">GameFi</span>
+                  <span class="bc-metric-label">Rewards</span>
                 </div>
                 <div class="bc-metric">
-                  <span class="bc-metric-value">500+</span>
-                  <span class="bc-metric-label">Participants</span>
+                  <span class="bc-metric-value">Supra dVRF</span>
+                  <span class="bc-metric-label">Randomness</span>
                 </div>
               </div>
               <div class="bc-card-links">
-                <a href="https://github.com/adharsh277" target="_blank" rel="noopener" class="bc-link-btn">
+                <a href="https://github.com/adharsh277/tloot-pool" target="_blank" rel="noopener" class="bc-link-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                  View Code
+                  Source Code
+                </a>
+                <a href="https://tloot-pool.vercel.app" target="_blank" rel="noopener" class="bc-link-btn bc-link-btn-primary">
+                  Explore &rarr;
                 </a>
               </div>
             </div>
           </div>
         </article>
-
       </div>
     </main>
 
