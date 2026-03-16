@@ -543,9 +543,6 @@ body.light .bc-gradient-text {
 .bc-project-card:nth-child(1) { animation-delay: 0.1s; }
 .bc-project-card:nth-child(2) { animation-delay: 0.2s; }
 .bc-project-card:nth-child(3) { animation-delay: 0.3s; }
-.bc-project-card:nth-child(4) { animation-delay: 0.4s; }
-.bc-project-card:nth-child(5) { animation-delay: 0.5s; }
-.bc-project-card:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes card-appear {
   to { opacity: 1; transform: translateY(0); }
@@ -620,30 +617,35 @@ body.light .bc-project-card:hover {
   margin-bottom: var(--gutter-small);
 }
 
-.bc-chain-tag {
+.bc-deploy-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--neon-green);
-  background: rgba(255, 215, 0, 0.08);
-  padding: 0.3rem 0.8rem;
+  color: var(--gold-primary);
+  background: rgba(255, 215, 0, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 0.35rem 1rem;
   border-radius: 100px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
 }
 
-.bc-chain-icon {
-  font-size: 0.6rem;
+.bc-deploy-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-primary);
 }
 
 .bc-card-number {
   font-size: 2.5rem;
   font-weight: 900;
   font-stretch: 125%;
-  color: var(--border-glow);
+  color: var(--gold-primary);
+  opacity: 0.12;
   line-height: 1;
   user-select: none;
 }
@@ -653,24 +655,12 @@ body.light .bc-project-card:hover {
   font-size: var(--h2);
   font-weight: 800;
   font-stretch: 125%;
-  color: var(--important);
+  background: linear-gradient(135deg, #ffffff, var(--gold-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.2;
   margin-bottom: var(--gutter-micro);
-  transition: color 0.3s;
-}
-
-.bc-project-card:hover .bc-card-title {
-  background: linear-gradient(135deg, var(--important) 30%, var(--neon-cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-body.light .bc-project-card:hover .bc-card-title {
-  background: linear-gradient(135deg, var(--important) 30%, var(--neon-cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Card description */
@@ -679,7 +669,82 @@ body.light .bc-project-card:hover .bc-card-title {
   color: var(--body);
   line-height: 1.7;
   margin-bottom: var(--gutter-small);
-  flex-grow: 1;
+}
+
+/* Deployment pipeline stepper */
+.bc-deploy-pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--gutter-micro);
+  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.bc-pipeline-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.bc-pipeline-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.bc-pipeline-stage.completed .bc-pipeline-icon {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.bc-pipeline-stage.live .bc-pipeline-icon {
+  border-color: var(--neon-purple);
+  color: var(--neon-purple);
+  background: rgba(215, 174, 251, 0.1);
+  box-shadow: 0 0 12px rgba(215, 174, 251, 0.2);
+}
+
+.bc-pipeline-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.62;
+}
+
+.bc-pipeline-stage.completed .bc-pipeline-label {
+  color: var(--gold-primary);
+  opacity: 0.85;
+}
+
+.bc-pipeline-stage.live .bc-pipeline-label {
+  color: var(--neon-purple);
+}
+
+.bc-pipeline-connector {
+  flex: 1;
+  height: 1px;
+  min-width: 22px;
+  margin-inline: 0.25rem;
+  background: var(--border-glow);
+  opacity: 0.45;
+  margin-bottom: 0.95rem;
 }
 
 /* Tech pills */
@@ -691,28 +756,21 @@ body.light .bc-project-card:hover .bc-card-title {
 }
 
 .bc-tech-pill {
+  font-family: 'Courier New', monospace;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   padding: 0.25rem 0.65rem;
   border-radius: 100px;
-  border: 1px solid var(--border-glow);
-  color: var(--sub);
-  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  color: var(--gold-primary);
+  background: rgba(255, 215, 0, 0.05);
   transition: all 0.3s ease;
 }
 
 .bc-project-card:hover .bc-tech-pill {
-  border-color: rgba(255, 215, 0, 0.25);
-  color: var(--important);
-}
-
-body.dark .bc-project-card:hover .bc-tech-pill {
-  background: rgba(255, 215, 0, 0.06);
-}
-
-body.light .bc-project-card:hover .bc-tech-pill {
-  background: rgba(255, 215, 0, 0.06);
+  border-color: rgba(255, 215, 0, 0.35);
+  background: rgba(255, 215, 0, 0.12);
 }
 
 /* Card footer */
@@ -735,19 +793,25 @@ body.light .bc-project-card:hover .bc-tech-pill {
 
 .bc-metric-value {
   display: block;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--important);
-  font-stretch: 125%;
+  font-family: 'Courier New', monospace;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--gold-primary);
 }
 
 .bc-metric-label {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--body);
+}
+
+.bc-card-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 /* Card link button */
@@ -755,11 +819,12 @@ body.light .bc-project-card:hover .bc-tech-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: 'Courier New', monospace;
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--important);
   padding: 0.5rem 1.2rem;
-  border: 1px solid var(--border-glow);
+  border: 1px solid var(--glass-border);
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
@@ -780,9 +845,22 @@ body.light .bc-project-card:hover .bc-tech-pill {
 }
 
 .bc-link-btn:hover {
-  border-color: var(--neon-green);
-  color: var(--important);
-  box-shadow: 0 0 20px var(--glow-green);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.bc-link-btn-primary {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  background: rgba(255, 215, 0, 0.06);
+}
+
+.bc-link-btn-primary:hover {
+  background: rgba(255, 215, 0, 0.14);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.18);
 }
 
 .bc-link-btn svg,
@@ -921,10 +999,27 @@ body.dark .bc-footer-links a svg {
     font-size: 1.8rem;
   }
 
+  .bc-card-title {
+    font-size: 1.35rem;
+  }
+
+  .bc-deploy-pipeline {
+    padding: 0.75rem 1rem;
+  }
+
   .bc-card-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--gutter-micro);
+  }
+
+  .bc-card-links {
+    width: 100%;
+  }
+
+  .bc-link-btn {
+    flex: 1;
+    justify-content: center;
   }
 
   .bc-footer-content {
